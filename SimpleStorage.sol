@@ -8,7 +8,6 @@ contract SimpleStorage {
         favouriteNumber = _favouriteNumber;
     }
 
-
     function retrieve() public view returns (uint) {
         return favouriteNumber;
     }
@@ -21,6 +20,8 @@ contract SimpleStorage {
         return favouriteNumber;
     }
 
+//using mapping to saparate and acccess people favourite Number
+    mapping(string => uint256) public nameTofavouriteNumber;
     // uint256[] public person;
 
     struct person {
@@ -30,30 +31,28 @@ contract SimpleStorage {
 
     person[] public listofPeople;
 
-    //calldata, memory, storage  
+    //calldata, memory, storage
     //calldata is a temporary varibles that cannot be modify
     //memory is temporary varibles that can be modify
     //Storage is a permanent variable that can be modify
 
-    function addperson (string memory _name, uint256 _favouriteNumber) public {
+    function addperson(string memory _name, uint256 _favouriteNumber) public {
         listofPeople.push(person(_favouriteNumber, _name));
     }
-
-
 }
-
-
 
 // Kindly set a value to expose it to public to other contract to acess it
 
 contract SmartContract {
     uint public dataRoom;
 
-    function set (uint256 x) public {
+    function set(uint256 x) public {
         dataRoom = x;
     }
 
-    function get () public view returns (uint) {
+    function get() public view returns (uint) {
         return dataRoom;
     }
 }
+
+
